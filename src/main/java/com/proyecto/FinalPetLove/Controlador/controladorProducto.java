@@ -36,9 +36,9 @@ public class controladorProducto {
 
 
     //Crear metodo de agregar
-    @PostMapping("/agregarProducto")
-    public String agregarProducto(@RequestBody Producto Productos) {
-        return servicio.agregarProducto(Productos);
+    @PostMapping("/agregarProducto/{idUsuario}/{idInventario}")
+    public String agregarProducto(@PathVariable("idUsuario") String idUsuario, @PathVariable("idInventario") String idInventario, @RequestBody Producto producto) {
+        return servicio.agregarProducto(idUsuario, idInventario, producto);
     }
 
 

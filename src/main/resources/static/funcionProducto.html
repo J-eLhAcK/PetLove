@@ -93,8 +93,16 @@
         <a href="service.html" class="nav-item nav-link">Servicio</a>
         <a href="price.html" class="nav-item nav-link">Precio</a>
         <a href="booking.html" class="nav-item nav-link">Reserva</a>
-
         <a href="contact.html" class="nav-item nav-link active">Contacto</a>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin (Provisional)
+          </a>
+          <div class="dropdown-menu" aria-labelledby="adminDropdown">
+            <a class="dropdown-item" href="funcionProducto.html">Productos</a>
+            <a class="dropdown-item" href="funcionServicio.html">Servicios</a>
+          </div>
+        </div>
       </div>
       <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Obtener cita</a>
     </div>
@@ -126,25 +134,27 @@
 <!-- Comienzo CRUD Agregar -->
 <div class="container-fluid pt-5">
   <div class="d-flex flex-column text-center mb-5 pt-5">
-    <h4 class="text-secondary mb-3">Contáctenos</h4>
+    <h4 class="text-secondary mb-3">Proximamente...</h4>
     <h1 class="display-4 m-0">Agregar <span class="text-primary">Producto</span></h1>
   </div>
   <div class="row justify-content-center">
-    <form id="agregarProductoForm">
+    <form id="formularioAgregarProducto">
       <div class="form-group">
-        <label for="id_producto">ID del Producto:</label>
-        <input type="text" class="form-control" id="id_producto" required>
+        <input type="text" class="form-control" name="idUsuario" placeholder="ID Usuario" required="required">
       </div>
       <div class="form-group">
-        <label for="nombre">Nombre del Producto:</label>
-        <input type="text" class="form-control" id="nombre" required>
+        <input type="text" class="form-control" name="idInventario" placeholder="ID Inventario" required="required">
       </div>
       <div class="form-group">
-        <label for="descripcion">Descripción:</label>
-        <input type="text" class="form-control" id="descripcion" required>
+        <input type="text" class="form-control" name="id_producto" placeholder="ID Producto" required="required">
       </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required="required">
+      </div>
+      <!-- Otros campos del formulario -->
       <button type="submit" class="btn btn-primary">Agregar Producto</button>
     </form>
+
 
   </div>
 </div>

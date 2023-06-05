@@ -1,15 +1,21 @@
 package com.proyecto.FinalPetLove.Servicio;
 
+import com.proyecto.FinalPetLove.Entidad.Inventario;
 import com.proyecto.FinalPetLove.Entidad.Producto;
+import com.proyecto.FinalPetLove.Entidad.Usuario;
 import com.proyecto.FinalPetLove.Repositorio.repositorioProducto;
+import com.proyecto.FinalPetLove.Repositorio.repositorioUsuario;
+import com.proyecto.FinalPetLove.Repositorio.repositorioInventario;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class servicioProducto {
     private repositorioProducto repositorio;
-
+    private repositorioInventario repositorioInv;
+    private repositorioUsuario repositorioUsu;
     public servicioProducto(repositorioProducto repositorio){
         this.repositorio=repositorio;
     }
@@ -34,17 +40,24 @@ public class servicioProducto {
 
 
 
-    public String agregarProducto(Producto Producto) {
-        //Pregutan si existe:
-        if (repositorio.findById(Producto.getId_producto()).isPresent())
-            return "El Producto ya esta registrado en nuestra veterinaria, rectifica porfavor";
+    public String agregarProducto(String idUsuario, String idInventario, Producto producto) {
+        Optional<Usuario> usuarioOptional = repositorioUsu.findById(idUsuario);
+        Optional<Inventario> inventarioOptional = repositorioInv.findById(idInventario);
 
+        if (usuarioOptional.isPresent() && inventarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+            Inventario inventario = inventarioOptional.get();
 
-        else{
-            repositorio.save(Producto);
-            return "El Producto se registro satisfactoriamente";
+            producto.setUsuario(usuario);
+            producto.setInventario(inventario);
+
+            repositorio.save(producto);
+            return "El Producto se registró satisfactoriamente";
+        } else {
+            return "ERROR AL REGISTRAR PRODUCTO. Usuario o inventario no encontrado.";
         }
     }
+
 
 
     //Metodo de actualizar:
