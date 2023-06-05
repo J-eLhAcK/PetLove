@@ -18,7 +18,7 @@ $(document).ready(function() {
     // Realiza la petición AJAX para agregar el producto
     $.ajax({
       type: 'POST',
-      url: '/agregarProducto',
+      url: 'http://localhost:8080/agregarProducto',
       contentType: 'application/json',
       data: JSON.stringify(producto),
       success: function(response) {
